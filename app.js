@@ -12,16 +12,9 @@ const connection = mysql.createConnection({
     database: 'employee_db',
 });
 
-// Prompts
-// Initial prompt
-const init = () => {
-    inquirer
-        .prompt([
-            {
-                name: 'initial',
-                type: 'list',
-                message: 'What would you like to do?',
-                choices: ['Add Department', 'Add Role', 'Add Employee', 'View Department', 'View Role', 'View Employee', 'Update Role'],
-            }
-        ]);
-};
+connection.connect((err) => {
+    if (err) throw err;
+    console.log(`connected as id ${connection.threadId}\n`);
+    init();
+});
+
