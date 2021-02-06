@@ -56,6 +56,7 @@ const init = () => {
 
                 default:
                     console.log('You must pick another option.');
+                    connection.end();
                 break;
             }
         })
