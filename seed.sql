@@ -1,11 +1,12 @@
 use employee_db;
 
--- Add
+-- Add department
 insert into department (
     id int not null primary key,
     name varchar(30) not null
 );
 
+-- Add role
 insert into role (
     id int not null primary key,
     title varchar(30) not null,
@@ -13,6 +14,7 @@ insert into role (
     department_id int not null
 );
 
+-- Add employee
 insert into employee (
     id int primary key not null,
     first_name varchar(30) not null,
@@ -21,7 +23,7 @@ insert into employee (
     manager_id int
 );
 
--- View
+-- View department
 select * from department;
 
 select * from role;
