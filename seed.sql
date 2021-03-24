@@ -2,7 +2,7 @@ use employee_db;
 
 -- Add department
 insert into department (name)
-value ("Managemnent");
+value ("Management");
 insert into department (name)
 value ("Sales");
 insert into department (name)
