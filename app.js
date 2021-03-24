@@ -91,7 +91,6 @@ const addDept = () => {
 
 // // Add role
 const addRole = () => {
-    let depts = [];
     connection.query('SELECT role.title AS Title FROM role'), (err, res) => {
         inquirer
             .prompt([
@@ -177,15 +176,6 @@ const addEmployee = () => {
 
 // // View department
 const viewDept = () => {
-    inquirer
-        .prompt(
-            {
-                name: 'viewDept',
-                type: 'list',
-                message: 'Which department would you like to view?',
-                choices: depts
-            }
-        )
     connection.query('SELECT employee.EmpFirstName, employee.EmpLastName, department.name AS department FROM employee JOIN role ON employee.role_id JOIN department ON role.department_id ORDER BY employee.id', (err, res) => {
         if (err) throw err;
             console.table(res);
@@ -195,15 +185,6 @@ const viewDept = () => {
 
 // // View role
 const viewRole = () => {
-    inquirer
-        .prompt(
-            {
-                name: 'viewRole',
-                type: 'list',
-                message: 'Which role would you like to view?',
-                choices: roles
-            }
-        )
     connection.query('SELECT employee.EmpFirstName, employee.EmpLastName, department.name AS department FROM employee JOIN role ON employee.role_id = role.id JOIN department ON role.department_id = department.id ORDER BY employee.id', (err, res) => {
         if (err) throw err;
             console.table(res);
@@ -213,15 +194,6 @@ const viewRole = () => {
 
 // // View employee
 const viewEmp = () => {
-    inquirer
-        .prompt(
-            {
-                name: 'viewEmp',
-                type: 'list',
-                message: 'Which employee would you like to view?',
-                choices: emps
-            }
-        )
     connection.query("SELECT employee.EmpFirstName, employee.EmpLastName, role.title, role.salary, department.name, CONCAT(e.EmpFirstName, '', e.EmpLastName) AS manager FROM employee INNER JOIN role on role.id = employee.role_id INNER JOIN department on department.id = role.department_id left join employee e on employee.manager_id = e.id", (err, res) => {
         if (err) throw err;
             console.table(res);
