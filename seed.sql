@@ -1,34 +1,27 @@
 use employee_db;
 
 -- Add department
-insert into department (
-    id int not null primary key,
-    name varchar(30) not null
-);
+insert into department (name)
+value ("Managemnent");
+insert into department (name)
+value ("Sales");
+insert into department (name)
+value ("Accounting");
 
 -- Add role
-insert into role (
-    id int not null primary key,
-    title varchar(30) not null,
-    salary decimal not null,
-    department_id int not null
-);
+insert into department (title, salary, department_id)
+value ("Manager", 100000, 1);
+insert into department (title, salary, department_id)
+value ("Salesperson", 75000, 2);
+insert into department (title, salary, department_id)
+value ("Accountant", 60000, 3);
+
+
 
 -- Add employee
-insert into employee (
-    id int primary key not null,
-    first_name varchar(30) not null,
-    last_name varchar(30) not null,
-    role_id int not null,
-    manager_id int
-);
-
--- View department
-select * from department;
-
-select * from role;
-
-select * from employee;
-
--- Update
-update employee set role = ? where role = ?; 
+insert into employee (first_name, last_name, manager_id, role_id)
+value ("Big", "Boss", null, 1);
+insert into employee (first_name, last_name, manager_id, role_id)
+value ("Solid", "Snake", 1, 2);
+insert into employee (first_name, last_name, manager_id, role_id)
+value ("Metalgear", "Rex", 1, 3);
